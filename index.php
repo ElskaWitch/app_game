@@ -1,5 +1,7 @@
 <!-- header -->
 <?php
+// demarrer session
+session_start();
 $title = "Accueil"; //title for current page
 include('partials/_header.php');
 include("helpers/functions.php");
@@ -22,6 +24,18 @@ $games = $query->fetchAll();
     <div class="wrap_content-head text-center">
         <h1 class="text-blue-500 text-5xl  text-uppercase font-black">App Game</h1>
         <p class="pt-5">L'app qui repertorie vos jeux</p>
+
+        <?php
+        // je verifie que session error et vide ou pas
+        if ($_SESSION["error"]) { ?>
+            <div class="bg-red-400 text-white">
+                <?= $_SESSION["error"] ?>
+            </div>
+        <?php }
+        // je vide ma variable $_SESSION["error] pour qu'il n'affiche pas de message
+        $_SESSION["error"] = [];
+        ?>
+
     </div>
     <div class="overflow-x-auto mt-16">
         <table class="table w-full">
@@ -51,7 +65,7 @@ $games = $query->fetchAll();
                             <td><?= $game['price'] ?></td>
                             <td><?= $game['PEGI'] ?></td>
                             <td>
-                                <a href="show.php">
+                                <a href="show.php?id=<?= $game['id'] ?>&name=<?= $game['name'] ?>">
                                     <img src="img/oeil.png" alt="eye" class="w-4">
                                 </a>
                             </td>
