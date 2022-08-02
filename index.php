@@ -2,8 +2,18 @@
 <?php
 $title = "Accueil"; //title for current page
 include('partials/_header.php');
+include("helpers/functions.php");
 // include PDO pour la connexion BDD
-require_once("helpers/pdo.php")
+require_once("helpers/pdo.php");
+//1- recuperer les jeux
+$sql = "SELECT * FROM jeux";
+// 2- prépare la requette (préformatter)
+$query = $pdo->prepare($sql);
+// 3- execute la requette
+$query->execute();
+// 4- on stock le resultat ds une variable
+$games = $query->fetchAll();
+debug_array($games)
 ?>
 
 <!-- main content -->
@@ -28,7 +38,6 @@ require_once("helpers/pdo.php")
                 </tr>
             </thead>
             <tbody>
-                <!-- row 1 -->
                 <tr>
                     <th>1</th>
                     <td>Zelda</td>

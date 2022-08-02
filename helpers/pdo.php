@@ -13,7 +13,7 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING
     ));
     // affiche message ok connexion
-    echo "connexion établie";
+    // echo "connexion établie";
 } catch (PDOException $e) {
     echo "Erreur de connexion : " . $e->getMessage();
 }
