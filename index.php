@@ -34,7 +34,7 @@ include('partials/_header.php');
                     <td>Switch</td>
                     <td>45.99</td>
                     <td>7</td>
-                    <td><img src="img/voir.png" alt="loupe" class="w-5"></td>
+                    <td><img src="img/oeil.png" alt="loupe" class="w-5"></td>
 
                 </tr>
             </tbody>
