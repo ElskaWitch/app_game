@@ -2,6 +2,8 @@
 <?php
 $title = "Accueil"; //title for current page
 include('partials/_header.php');
+// include PDO pour la connexion BDD
+require_once("helpers/pdo.php")
 ?>
 
 <!-- main content -->
@@ -34,8 +36,11 @@ include('partials/_header.php');
                     <td>Switch</td>
                     <td>45.99</td>
                     <td>7</td>
-                    <td><img src="img/oeil.png" alt="loupe" class="w-5"></td>
-
+                    <td>
+                        <a href="show.php">
+                            <img src="img/oeil.png" alt="eye" class="w-4">
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table>
