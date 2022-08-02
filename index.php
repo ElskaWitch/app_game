@@ -13,7 +13,7 @@ $query = $pdo->prepare($sql);
 $query->execute();
 // 4- on stock le resultat ds une variable
 $games = $query->fetchAll();
-debug_array($games)
+// debug_array($games)
 ?>
 
 <!-- main content -->
@@ -28,7 +28,7 @@ debug_array($games)
             <!-- table-->
             <thead>
                 <tr>
-                    <th></th>
+                    <th>#</th>
                     <th>Nom</th>
                     <th>Genre</th>
                     <th>Plateform</th>
@@ -38,19 +38,26 @@ debug_array($games)
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>1</th>
-                    <td>Zelda</td>
-                    <td>Aventure</td>
-                    <td>Switch</td>
-                    <td>45.99</td>
-                    <td>7</td>
-                    <td>
-                        <a href="show.php">
-                            <img src="img/oeil.png" alt="eye" class="w-4">
-                        </a>
-                    </td>
-                </tr>
+                <?php
+                if (count($games) == 0) {
+                    echo " <tr><td class='text-center'> Pas de jeux disponible actuellement</td> </tr>";
+                } else { ?>
+                    <?php foreach ($games as $game) : ?>
+                        <tr>
+                            <th><?= $game['id'] ?></th>
+                            <td><?= $game['name'] ?></td>
+                            <td><?= $game['genre'] ?></td>
+                            <td><?= $game['plateforms'] ?></td>
+                            <td><?= $game['price'] ?></td>
+                            <td><?= $game['PEGI'] ?></td>
+                            <td>
+                                <a href="show.php">
+                                    <img src="img/oeil.png" alt="eye" class="w-4">
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                <?php } ?>
             </tbody>
         </table>
     </div>
