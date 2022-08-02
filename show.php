@@ -46,6 +46,9 @@ if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
         <p>PEGI : <?= $game["PEGI"] ?></p>
         <p>Prix : <?= $game["price"] ?>€</p>
     </div>
+    <div class="pt-10">
+        <a href="delete.php?id=<?= $game["id"] ?>&name=<?= $game["name"] ?>" class="btn btn-error text-white">Supprimer le jeu</a>
+    </div>
 </div>
 
 <!-- footer -->
