@@ -36,7 +36,7 @@ if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
 }
 ?>
 
-<div class="text-center ">
+<div class="text-center mb-16">
     <h1 class="text-blue-500 text-5xl  text-uppercase font-black pb-10 pt-16 "><?= $game["name"] ?></h1>
     <p class="pb-5"><?= $game["description"] ?></p>
     <div class="">
