@@ -25,6 +25,11 @@ $games = $query->fetchAll();
         <h1 class="text-blue-500 text-5xl  text-uppercase font-black">App Game</h1>
         <p class="pt-5">L'app qui repertorie vos jeux</p>
 
+        <!--Add Game -->
+        <div class="pt-16">
+            <a href="addGame.php" class="btn bg-blue-500">Ajouter un jeu</a>
+        </div>
+
         <!-- pour DELETE -->
         <?php
         // je verifie que session error et vide ou pas
@@ -43,9 +48,9 @@ $games = $query->fetchAll();
         ?>
 
     </div>
+    <!-- table-->
     <div class="overflow-x-auto mt-16 mb-16">
         <table class="table w-full ">
-            <!-- table-->
             <thead>
                 <tr>
                     <th>#</th>
