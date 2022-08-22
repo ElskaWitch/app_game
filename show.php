@@ -36,20 +36,23 @@ if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
 }
 ?>
 
-<div class="text-center mb-16">
-    <h1 class="text-blue-500 text-5xl  text-uppercase font-black pb-10 pt-16 "><?= $game["name"] ?></h1>
-    <p class="pb-5"><?= $game["description"] ?></p>
-    <div class="">
-        <p>Genre : <?= $game["genre"] ?></p>
-        <p>Plateforms : <?= $game["plateforms"] ?></p>
-        <p>Note : <?= $game["note"] ?>/10</p>
-        <p>PEGI : <?= $game["PEGI"] ?></p>
-        <p>Prix : <?= $game["price"] ?>€</p>
-    </div>
-    <div class="pt-10">
-        <a href="delete.php?id=<?= $game["id"] ?>&name=<?= $game["name"] ?>" class="btn btn-error text-white">Supprimer le jeu</a>
-    </div>
-</div>
+<a href="index.php" class="text-blue-500 text-sm">
+    <- retour </a>
+        <div class="text-center mb-16">
+            <h1 class="text-blue-500 text-5xl  text-uppercase font-black pb-10 pt-16 "><?= $game["name"] ?></h1>
+            <p class="pb-5"><?= $game["description"] ?></p>
+            <div class="">
+                <p>Genre : <?= $game["genre"] ?></p>
+                <p>Plateforms : <?= $game["plateforms"] ?></p>
+                <p>Note : <?= $game["note"] ?>/10</p>
+                <p>PEGI : <?= $game["PEGI"] ?></p>
+                <p>Prix : <?= $game["price"] ?>€</p>
+            </div>
+            <div class="pt-10">
+                <a href="modifier.php?id=<?= $game["id"] ?>&name=<?= $game["name"] ?>" class="btn btn-success text-white">Modifier</a>
+                <?php include("partials/_modal.php") ?>
+            </div>
+        </div>
 
-<!-- footer -->
-<?php include('partials/_footer.php') ?>
+        <!-- footer -->
+        <?php include('partials/_footer.php') ?>
