@@ -8,7 +8,7 @@ include("helpers/functions.php");
 // include PDO pour la connexion BDD
 require_once("helpers/pdo.php");
 //1- recuperer les jeux
-$sql = "SELECT * FROM jeux";
+$sql = "SELECT * FROM jeux ORDER BY name";
 // 2- prépare la requette (préformatter)
 $query = $pdo->prepare($sql);
 // 3- execute la requette
@@ -64,12 +64,13 @@ $games = $query->fetchAll();
             </thead>
             <tbody>
                 <?php
+                $index = 1;
                 if (count($games) == 0) {
                     echo " <tr><td class='text-center'> Pas de jeux disponible actuellement</td> </tr>";
                 } else { ?>
                     <?php foreach ($games as $game) : ?>
                         <tr>
-                            <th><?= $game['id'] ?></th>
+                            <th><?= $index++ ?></th>
                             <td><?= $game['name'] ?></td>
                             <td><?= $game['genre'] ?></td>
                             <td><?= $game['plateforms'] ?></td>
