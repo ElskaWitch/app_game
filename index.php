@@ -32,6 +32,8 @@ $games = $query->fetchAll();
 
         <!-- pour DELETE -->
         <?php
+        $_SESSION["error"] = [];
+        $_SESSION["success"] = [];
         // je verifie que session error et vide ou pas
         if ($_SESSION["error"]) { ?>
             <div class="bg-red-400 text-white py-6">
@@ -60,6 +62,7 @@ $games = $query->fetchAll();
                     <th>prix</th>
                     <th>PEGI</th>
                     <th>Voir</th>
+                    <th>Supprimer</th>
                 </tr>
             </thead>
             <tbody>
@@ -69,9 +72,9 @@ $games = $query->fetchAll();
                     echo " <tr><td class='text-center'> Pas de jeux disponible actuellement</td> </tr>";
                 } else { ?>
                     <?php foreach ($games as $game) : ?>
-                        <tr>
-                            <th><?= $index++ ?></th>
-                            <td><?= $game['name'] ?></td>
+                        <tr class="hover:text-blue-500 ">
+                            <th class="text-blue-500 font-black"> <?= $index++ ?> </th>
+                            <td><a href="show.php?id=<?= $game['id'] ?>&name=<?= $game['name'] ?>"><?= $game['name'] ?></a></td>
                             <td><?= $game['genre'] ?></td>
                             <td><?= $game['plateforms'] ?></td>
                             <td><?= $game['price'] ?></td>
@@ -81,6 +84,7 @@ $games = $query->fetchAll();
                                     <img src="img/oeil.png" alt="eye" class="w-4">
                                 </a>
                             </td>
+                            <td><?php include("partials/_modal.php") ?></td>
                         </tr>
                     <?php endforeach ?>
                 <?php } ?>
