@@ -57,7 +57,9 @@ if (!empty($_POST["submited"])) {
 <div class="pt-10">
     <a href="index.php" class="text-blue-500 text-sm">
         <- retour </a>
-            <h1 class="text-blue-500 text-5xl  text-uppercase font-black pb-10 pt-16 text-center ">Modifier le jeu</h1>
+            <?php $main_title = "Modifier le jeu";
+            include("partials/_h1.php")
+            ?>
             <form action="" method="POST" class="grid place-items-center bg-gray-100 mx-96 py-10 my-16 gap-y-4 rounded-xl">
                 <!--input name  -->
                 <div class="mb-4">

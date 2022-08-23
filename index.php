@@ -7,46 +7,25 @@ include('partials/_header.php');
 include("helpers/functions.php");
 // include PDO pour la connexion BDD
 require_once("helpers/pdo.php");
-//1- recuperer les jeux
-$sql = "SELECT * FROM jeux ORDER BY name";
-// 2- prépare la requette (préformatter)
-$query = $pdo->prepare($sql);
-// 3- execute la requette
-$query->execute();
-// 4- on stock le resultat ds une variable
-$games = $query->fetchAll();
-// debug_array($games)
+// requette all
+require_once("sql/selectAll-sql.php");
 ?>
 
 <!-- main content -->
 <div class="pt-16 wrap_content">
     <!-- head content -->
     <div class="wrap_content-head text-center">
-        <h1 class="text-blue-500 text-5xl  text-uppercase font-black">App Game</h1>
+        <?php $main_title = "App Game";
+        include("partials/_h1.php")
+        ?>
         <p class="pt-5">L'app qui repertorie vos jeux</p>
 
         <!--Add Game -->
-        <div class="pt-16">
+        <div class="pt-16 pb-16">
             <a href="addGame.php" class="btn bg-blue-500">Ajouter un jeu</a>
         </div>
 
-        <!-- pour DELETE -->
-        <?php
-
-        // je verifie que session error et vide ou pas
-        if (!empty($_SESSION["error"])) { ?>
-            <div class="bg-red-400 text-white py-6">
-                <?= $_SESSION["error"] ?>
-            </div>
-        <?php } elseif (!empty($_SESSION["success"])) { ?>
-            <div class="bg-green-400 text-white py-6">
-                <?= $_SESSION["success"] ?>
-            </div>
-        <?php }
-        // je vide ma variable $_SESSION["error] pour qu'il n'affiche pas de message
-        $_SESSION["error"] = [];
-        $_SESSION["success"] = [];
-        ?>
+        <?php require_once("partials/_alert.php") ?>
 
     </div>
     <!-- table-->
