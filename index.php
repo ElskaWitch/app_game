@@ -32,14 +32,13 @@ $games = $query->fetchAll();
 
         <!-- pour DELETE -->
         <?php
-        $_SESSION["error"] = [];
-        $_SESSION["success"] = [];
+
         // je verifie que session error et vide ou pas
-        if ($_SESSION["error"]) { ?>
+        if (!empty($_SESSION["error"])) { ?>
             <div class="bg-red-400 text-white py-6">
                 <?= $_SESSION["error"] ?>
             </div>
-        <?php } elseif ($_SESSION["success"]) { ?>
+        <?php } elseif (!empty($_SESSION["success"])) { ?>
             <div class="bg-green-400 text-white py-6">
                 <?= $_SESSION["success"] ?>
             </div>

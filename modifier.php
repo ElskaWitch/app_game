@@ -28,11 +28,11 @@ if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
 
     if (!$game) {
         $_SESSION["error"] = "Ce jeu n'est pas disponible.";
-        header("location: index.php");
+        header("Location: index.php");
     }
 } else {
     $_SESSION["error"] = "URL invalide";
-    header("location: index.php");
+    header("Location: index.php");
 }
 
 // creation array error
@@ -52,6 +52,7 @@ if (!empty($_POST["submited"])) {
     }
 }
 ?>
+
 
 <div class="pt-10">
     <a href="index.php" class="text-blue-500 text-sm">
