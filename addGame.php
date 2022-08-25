@@ -17,12 +17,13 @@ $errorMessage = "<span class=text-red-500>*Ce champs est obligatoire</span>";
 // variable success
 $success = false;
 
+
 // 1-je verifie si le formulaire est soumis
-if (!empty($_POST["submited"])) {
+if (!empty($_POST["submited"]) && isset($_FILES["url_img"]) && $_FILES["url_img"]["error"] == 0) {
     //2-je fais les failles xss
     //3-validation de chaque input
     require_once("validation-formulaire/include.php");
-
+    debug_array($error);
     // //4- if no error
     if (count($error) == 0) {
         require_once("sql/addGame-sql.php");
@@ -37,7 +38,7 @@ if (!empty($_POST["submited"])) {
             <?php $main_title = "Ajouter un jeu";
             include("partials/_h1.php")
             ?>
-            <form action="" method="POST" class="grid place-items-center bg-gray-100 mx-96 py-10 my-16 gap-y-4 rounded-xl">
+            <form action="" method="POST" class="grid place-items-center bg-gray-100 mx-96 py-10 my-16 gap-y-4 rounded-xl" enctype="multipart/form-data">
                 <!--input name  -->
                 <div class="mb-4">
                     <label for="name" class="font-semibold text-blue-500">name</label>
@@ -129,8 +130,8 @@ if (!empty($_POST["submited"])) {
                 <?php
                 $plateformArray = [
                     ["name" => "Switch", "checked" => "checked"],
-                    ["name" => "Ps3"],
-                    ["name" => "Ps4"],
+                    ["name" => "PS3"],
+                    ["name" => "PS4"],
                     ["name" => "Xbox"],
                 ]
                 ?>
@@ -183,6 +184,20 @@ if (!empty($_POST["submited"])) {
                         ?>
                     </p>
                 </div>
+
+                <!-- upload image -->
+                <div class="py-3 text-center">
+                    <label for="url_img" class="text-blue-500 font-semibold ">Votre image</label>
+                    <input type="file" class="block pt-3" id="url_img" name="url_img">
+                    <p>
+                        <?php
+                        if (!empty($error["url_img"])) {
+                            echo $error["url_img"];
+                        }
+                        ?>
+                    </p>
+                </div>
+
                 <!-- submit btn -->
                 <div class="py-5">
                     <input type="submit" name="submited" value="Ajouter" class="btn btn-active btn-primary">

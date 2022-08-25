@@ -5,6 +5,7 @@ $price = clear_xss($_POST["price"]);
 $note = clear_xss($_POST["note"]);
 $description = clear_xss($_POST["description"]);
 
+
 $genres = !empty($_POST["genre"]) ? $_POST["genre"] : [];
 $genre_clear = [];
 foreach ($genres as $genre) {
@@ -18,3 +19,4 @@ foreach ($plateforms as $plateform) {
 };
 
 $PEGI = !empty($_POST["PEGI"]) ? clear_xss($_POST["PEGI"]) : [];
+$url_img = $img_upload_path;

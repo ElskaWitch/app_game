@@ -199,6 +199,18 @@ if (!empty($_POST["submited"])) {
                         ?>
                     </p>
                 </div>
+                <!-- upload image -->
+                <div class="py-3 text-center">
+                    <label for="url_img" class="text-blue-500 font-semibold ">Votre image</label>
+                    <input type="file" class="block pt-3" id="url_img" name="url_img">
+                    <p>
+                        <?php
+                        if (!empty($error["url_img"])) {
+                            echo $error["url_img"];
+                        }
+                        ?>
+                    </p>
+                </div>
                 <!-- input id -->
                 <input type="hidden" name="id" value="<?= $game["id"] ?>">
                 <!-- submit btn -->

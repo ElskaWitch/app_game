@@ -40,6 +40,7 @@ require_once("sql/selectAll-sql.php");
                     <th>prix</th>
                     <th>PEGI</th>
                     <th>Voir</th>
+                    <th>Modifier</th>
                     <th>Supprimer</th>
                 </tr>
             </thead>
@@ -62,6 +63,7 @@ require_once("sql/selectAll-sql.php");
                                     <img src="img/oeil.png" alt="eye" class="w-4">
                                 </a>
                             </td>
+                            <td><a href="modifier.php?id=<?= $game["id"] ?>&name=<?= $game["name"] ?>" class="btn btn-success text-white">Modifier</a></td>
                             <td><?php include("partials/_modal.php") ?></td>
                         </tr>
                     <?php endforeach ?>
