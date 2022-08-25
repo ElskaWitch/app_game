@@ -202,7 +202,8 @@ if (!empty($_POST["submited"])) {
                 <!-- upload image -->
                 <div class="py-3 text-center">
                     <label for="url_img" class="text-blue-500 font-semibold ">Votre image</label>
-                    <input type="file" class="block pt-3" id="url_img" name="url_img">
+                    <input type="file" class="block pt-3" id="url_img" name="url_img" value="<?=
+                                                                                                $game["url_img"]  ?>">
                     <p>
                         <?php
                         if (!empty($error["url_img"])) {
