@@ -1,5 +1,5 @@
 <?php
-require("helpers/functions.php");
+require("utils/helpers/functions.php");
 
 /**
  * Get connexion with DB (DataBase)
@@ -74,4 +74,20 @@ function getGame(): array
     }
 
     return $game;
+}
+
+/**
+ *  This function delete a game(item)
+ * @return void
+ */
+function delete(): void
+{
+    $pdo = getPDO();
+    $id = getId();
+    $sql = "DELETE FROM jeux WHERE id=?";
+    $query = $pdo->prepare($sql);
+    $query->execute([$id]);
+    //redirect
+    $_SESSION["success"] = "Le jeu es bien supprimer.";
+    header("location:index.php");
 }
