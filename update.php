@@ -8,6 +8,9 @@ $error = [];
 $errorMessage = "<span class=text-red-500>*Ce champs est obligatoire</span>";
 
 if (!empty($_POST["submited"])) {
+    if (empty($_FILES["url_img"]["name"])) {
+        $url_img = $game["url_img"];
+    }
     update($error);
 }
 

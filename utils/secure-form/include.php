@@ -8,3 +8,5 @@ require_once("input-description.php");
 require_once("input-genre.php");
 require_once("input-plateform.php");
 require_once("input-pegi.php");
+
+// $arr = compact("name","price","note","description","genre_clear","plateforms_clear","PEGI","url_img");
