@@ -1,6 +1,4 @@
    <?php
-
-    // je verifie que session error et vide ou pas
     if (!empty($_SESSION["error"])) { ?>
        <div class="alert alert-error shadow-lg">
            <div>
@@ -21,7 +19,7 @@
            </div>
        </div>
    <?php }
-    // je vide ma variable $_SESSION["error] pour qu'il n'affiche pas de message
+
     $_SESSION["error"] = [];
     $_SESSION["success"] = [];
     ?>
