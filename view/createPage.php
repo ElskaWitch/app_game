@@ -1,5 +1,4 @@
 <?php
-
 $title = "Ajouter un jeux";
 ob_start();
 require("partials/_create.php");
