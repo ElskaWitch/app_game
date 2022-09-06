@@ -94,8 +94,6 @@ function delete(): void
 
 /**
  *  This function create item(game)
- * 
- * @param array $error
  * @return void
  */
 function create($name, $price, $note, $description, $genre_clear, $plateforms_clear, $PEGI, $url_img): void
@@ -122,26 +120,23 @@ function create($name, $price, $note, $description, $genre_clear, $plateforms_cl
  * This function update a item(game)
  * @return void
  */
-function update($error): void
+function update($name, $price, $note, $description, $genre_clear, $plateforms_clear, $PEGI, $url_img): void
 {
-    require_once("utils/secure-form/include.php");
-    if (count($error) == 0) {
-        $pdo = getPDO();
-        $id = getId();
-        $sql = "UPDATE jeux SET name = :name, price = :price, genre = :genre, note = :note, plateforms = :plateforms, description = :description, PEGI = :PEGI, url_img = :url_img, updated_at = NOW() WHERE id= :id";
-        $query = $pdo->prepare($sql);
-        $query->bindValue(':id', $id, PDO::PARAM_INT);
-        $query->bindValue(':name', $name, PDO::PARAM_STR);
-        $query->bindValue(':price', $price, PDO::PARAM_STMT);
-        $query->bindValue(':note', $note, PDO::PARAM_STMT);
-        $query->bindValue(':description', $description, PDO::PARAM_STR);
-        $query->bindValue(':genre', implode("|", $genre_clear), PDO::PARAM_STR);
-        $query->bindValue(':plateforms', implode("|", $plateforms_clear), PDO::PARAM_STR);
-        $query->bindValue(':PEGI', $PEGI, PDO::PARAM_STR);
-        $query->bindValue(':url_img', $url_img, PDO::PARAM_STR);
-        $query->execute();
-        $_SESSION["success"] = "le jeu a bien été modifié";
-        header("Location: index.php");
-        die;
-    }
+    $pdo = getPDO();
+    $id = getId();
+    $sql = "UPDATE jeux SET name = :name, price = :price, genre = :genre, note = :note, plateforms = :plateforms, description = :description, PEGI = :PEGI, url_img = :url_img, updated_at = NOW() WHERE id= :id";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':id', $id, PDO::PARAM_INT);
+    $query->bindValue(':name', $name, PDO::PARAM_STR);
+    $query->bindValue(':price', $price, PDO::PARAM_STMT);
+    $query->bindValue(':note', $note, PDO::PARAM_STMT);
+    $query->bindValue(':description', $description, PDO::PARAM_STR);
+    $query->bindValue(':genre', implode("|", $genre_clear), PDO::PARAM_STR);
+    $query->bindValue(':plateforms', implode("|", $plateforms_clear), PDO::PARAM_STR);
+    $query->bindValue(':PEGI', $PEGI, PDO::PARAM_STR);
+    $query->bindValue(':url_img', $url_img, PDO::PARAM_STR);
+    $query->execute();
+    $_SESSION["success"] = "le jeu a bien été modifié";
+    header("Location: index.php");
+    die;
 }
