@@ -8,7 +8,7 @@ session_start();
  */
 require_once("models/Game.php");
 $model = new Game();
-$games = $model->getAllGames();
+$games = $model->getAll();
 /**
  * Show View
  */

@@ -3,15 +3,21 @@ require("database.php");
 
 class Game
 {
+    private $pdo;
+
+    public function __construct()
+    {
+        $this->pdo = getPDO();
+    }
+
     /**
      * This function return all games in array
      * @return array
      */
-    function getAllGames(): array
+    function getAll(): array
     {
-        $pdo = getPDO();
         $sql = "SELECT * FROM jeux ORDER BY name";
-        $query = $pdo->prepare($sql);
+        $query = $this->pdo->prepare($sql);
         $query->execute();
         $games = $query->fetchAll();
 
@@ -36,12 +42,11 @@ class Game
      * This function return a single game
      * @return array
      */
-    function getGame(): array
+    function get(): array
     {
-        $pdo = getPDO();
         $id = $this->getId();
         $sql = "SELECT * FROM jeux WHERE id=:id";
-        $query = $pdo->prepare($sql);
+        $query = $this->pdo->prepare($sql);
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
         $game = $query->fetch();
@@ -60,10 +65,9 @@ class Game
      */
     function delete(): void
     {
-        $pdo = getPDO();
         $id = $this->getId();
         $sql = "DELETE FROM jeux WHERE id=?";
-        $query = $pdo->prepare($sql);
+        $query = $this->pdo->prepare($sql);
         $query->execute([$id]);
         //redirect
         $_SESSION["success"] = "Le jeu es bien supprimer.";
@@ -76,9 +80,8 @@ class Game
      */
     function create($name, $price, $note, $description, $genre_clear, $plateforms_clear, $PEGI, $url_img): void
     {
-        $pdo = getPDO();
         $sql = "INSERT INTO jeux(name, price, genre, note, plateforms, description, PEGI, created_at, url_img) VALUES(:name, :price, :genre, :note, :plateforms, :description, :PEGI, NOW(), :url_img)";
-        $query = $pdo->prepare($sql);
+        $query = $this->pdo->prepare($sql);
         $query->bindValue(':name', $name, PDO::PARAM_STR);
         $query->bindValue(':price', $price, PDO::PARAM_STMT);
         $query->bindValue(':note', $note, PDO::PARAM_STMT);
@@ -100,10 +103,9 @@ class Game
      */
     function update($name, $price, $note, $description, $genre_clear, $plateforms_clear, $PEGI, $url_img): void
     {
-        $pdo = getPDO();
         $id = $this->getId();
         $sql = "UPDATE jeux SET name = :name, price = :price, genre = :genre, note = :note, plateforms = :plateforms, description = :description, PEGI = :PEGI, url_img = :url_img, updated_at = NOW() WHERE id= :id";
-        $query = $pdo->prepare($sql);
+        $query = $this->pdo->prepare($sql);
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->bindValue(':name', $name, PDO::PARAM_STR);
         $query->bindValue(':price', $price, PDO::PARAM_STMT);
