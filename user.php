@@ -8,7 +8,7 @@ session_start();
  */
 require_once("models/User.php");
 $model = new User();
-$users = $model->getAll();
+$users = $model->getAll("name");
 /**
  * Show View
  */

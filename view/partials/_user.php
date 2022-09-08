@@ -8,7 +8,7 @@
 
          <!--Add user -->
          <div class="pt-16 pb-16">
-             <a href="addGame.php" class="btn bg-blue-500">Ajouter un user</a>
+             <a href="createUser.php" class="btn bg-blue-500">Ajouter un user</a>
          </div>
 
          <?php require_once("_alert.php") ?>
