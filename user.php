@@ -9,7 +9,4 @@ session_start();
 require_once("models/User.php");
 $model = new User();
 $users = $model->getAll("name");
-/**
- * Show View
- */
 require("view/userPage.php");
