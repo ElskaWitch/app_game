@@ -2,33 +2,33 @@
 
 namespace Controllers;
 
-require_once("models/Game.php");
+require_once("models/User.php");
 
-class Game
+class User
 {
     private $model;
 
     public function __construct()
     {
-        $this->model = new \Models\Game();
+        $this->model = new \Models\User();
     }
 
     public function index()
     {
-        $games = $this->model->getAll("name");
-        require("view/homePage.php");
+        $users = $this->model->getAll("name");
+        require("view/userPage.php");
     }
 
     public function show()
     {
-        $game = $this->model->get();
-        $title = $game['name'];
-        require("view/showPage.php");
+        $user = $this->model->get();
+        $title = $user['name'];
+        require("view/showUserPage.php");
     }
 
     public function create()
     {
-        $title = "Add Game";
+        $title = "Add User";
         $error = [];
         $errorMessage = "<span class=text-red-500>*Ce champs est obligatoire</span>";
         if (!empty($_POST["submited"])) {
@@ -37,7 +37,7 @@ class Game
                 $this->model->create($name, $price, $note, $description, $genre_clear, $plateforms_clear, $PEGI, $url_img);
             }
         }
-        require("view/createPage.php");
+        require("view/createUserPage.php");
     }
 
     public function update()
@@ -52,7 +52,7 @@ class Game
                 $this->model->update($name, $price, $note, $description, $genre_clear, $plateforms_clear, $PEGI, $url_img);
             }
         }
-        require("view/updatePage.php");
+        require("view/updateUserPage.php");
     }
 
     public function delete()
